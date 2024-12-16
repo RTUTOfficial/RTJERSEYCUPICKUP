@@ -1,141 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RADTECH JERSEY : CU PICKUP</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://img2.pic.in.th/pic/a348d6de1f8d94fc1c4d6905b701c4fc.png');
-      background-size: cover;
-      color: #1a1c27;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-    }
-    .container {
-      background-color: rgba(255, 255, 255, 0.8);
-      width: 80%;
-      max-width: 600px;
-      margin: 50px auto;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    h1 {
-      color: #1a1c27;
-    }
-    input, select, button {
-      width: 80%;
-      margin: 10px 0;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-    }
-    button {
-      background-color: #1a1c27;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #727bab;
-    }
-    .logo {
-      width: 100px;
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <img src="https://img2.pic.in.th/pic/dddddd0a0daecda788b848.png" alt="Logo" class="logo">
-    <h1>RADTECH JERSEY : CU PICKUP</h1>
-    <input type="text" id="query" placeholder="กรอกคำค้นหา (ชื่อหรือเบอร์โทร)">
-    <button onclick="searchData()">ค้นหา</button>
-    <div id="result"></div>
-    <div id="dateSection" style="display:none;">
-      <h3>เลือกสถานที่นัดรับ</h3>
-      <select id="pickupLocation" onchange="updateAvailableDates()">
-        <option value="">-- กรุณาเลือกสถานที่ --</option>
-        <option value="คณะสหเวชศาสตร์ จุฬาฯ">คณะสหเวชศาสตร์ จุฬาฯ(17:00 - 18:00 น.)</option>
-        <option value="โรงพยาบาลจุฬาฯ">โรงพยาบาลจุฬาฯ(16:30 - 17:30 น.)</option>
-        <option value="อื่นๆ">อื่นๆ (โปรดติดต่อ ig : RTCU.Official ก่อนเลือกจุดรับนี้)</option>
-      </select>
-      <h3>เลือกวันที่นัดรับสินค้า</h3>
-      <select id="pickupDate">
-        <option value="">-- กรุณาเลือกวันที่ --</option>
-      </select>
-      <button onclick="saveDate()">บันทึกวันที่และสถานที่</button>
-    </div>
-  </div>
-
-  <script>
-    let selectedRow = null;
-
-    // ตัวอย่างวันที่ตามสถานที่
-    const locationDates = {
-      "คณะสหเวชศาสตร์ จุฬาฯ": ["2025-JAN-06", "2025-JAN-07", "2025-JAN-08"],
-      "โรงพยาบาลจุฬาฯ": ["2024-DEC-17" , "2025-JAN-02", "2025-JAN-03", "2025-JAN-05"],
-      "อื่นๆ": []
-    };
-
-    function searchData() {
-      const query = document.getElementById('query').value;
-      if (!query) {
-        alert('กรุณากรอกคำค้นหา');
-        return;
-      }
-      google.script.run.withSuccessHandler(displayResult).searchData(query);
-    }
-
-    function displayResult(data) {
-      const resultDiv = document.getElementById('result');
-      if (data.error) {
-        resultDiv.innerHTML = `<p style="color: red;">${data.error}</p>`;
-        document.getElementById('dateSection').style.display = 'none';
-      } else {
-        selectedRow = data.row;
-        resultDiv.innerHTML = `
-          <p><strong>เบอร์โทร:</strong> ${data.name}</p>
-          <p><strong>ชื่อ:</strong> ${data.phone}</p>
-          <p><strong>สินค้าที่สั่ง:</strong> ${data.product}</p>
-        `;
-        document.getElementById('dateSection').style.display = 'block';
-      }
-    }
-
-    function updateAvailableDates() {
-      const location = document.getElementById('pickupLocation').value;
-      const dateSelect = document.getElementById('pickupDate');
-      dateSelect.innerHTML = '<option value="">-- กรุณาเลือกวันที่ --</option>'; // Reset options
-
-      if (locationDates[location]) {
-        locationDates[location].forEach(date => {
-          const option = document.createElement('option');
-          option.value = date;
-          option.textContent = new Date(date).toLocaleDateString('th-TH');
-          dateSelect.appendChild(option);
-        });
-      }
-
-      if (location === "อื่นๆ") {
-        alert("โปรดติดต่อ ig : RTCU.Official ก่อนเลือกจุดรับนี้");
-      }
-    }
-
-    function saveDate() {
-      const date = document.getElementById('pickupDate').value;
-      const location = document.getElementById('pickupLocation').value;
-      if (!date || !location) {
-        alert('กรุณาเลือกสถานที่และวันที่');
-        return;
-      }
-      google.script.run.withSuccessHandler(response => {
-        alert(response.message);
-      }).savePickupDetails(selectedRow, date, location);
-    }
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <!-- Redirect หลังจากโหลดหน้านี้ -->
+    <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbw-XuScZZJPAUM6dnHXw89qwh1XxiV5VrpNhp9hNMx_u-ECIFxu3hEB0L5kT1vMUAGz/exec">
+    <script>
+      // Redirect โดยใช้ JavaScript (เผื่อกรณี meta ไม่ทำงาน)
+      window.location.href = "https://script.google.com/macros/s/AKfycbw-XuScZZJPAUM6dnHXw89qwh1XxiV5VrpNhp9hNMx_u-ECIFxu3hEB0L5kT1vMUAGz/exec";
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to Google Apps Script Web App...</p>
+    <p>If you are not redirected automatically, <a href="https://script.google.com/macros/s/AKfycbw-XuScZZJPAUM6dnHXw89qwh1XxiV5VrpNhp9hNMx_u-ECIFxu3hEB0L5kT1vMUAGz/exec">click here</a>.</p>
+  </body>
 </html>
