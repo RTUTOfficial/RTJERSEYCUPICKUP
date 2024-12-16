@@ -1,9 +1,23 @@
-addEventListener("fetch", event => {
-  event.respondWith(handleRequest(event.request));
-});
-
-async function handleRequest(request) {
-  const url = "https://script.google.com/macros/s/AKfycbw-XuScZZJPAUM6dnHXw89qwh1XxiV5VrpNhp9hNMx_u-ECIFxu3hEB0L5kT1vMUAGz/exec";
-  const response = await fetch(url);
-  return new Response(response.body, response);
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Apps Script API</title>
+</head>
+<body>
+    <h1>Data from Google Apps Script</h1>
+    <div id="content">Loading...</div>
+    <script>
+        fetch("https://script.google.com/macros/s/AKfycbw-XuScZZJPAUM6dnHXw89qwh1XxiV5VrpNhp9hNMx_u-ECIFxu3hEB0L5kT1vMUAGz/exec")
+            .then(response => response.text()) // รับเนื้อหาเป็น text หรือ JSON
+            .then(data => {
+                document.getElementById("content").innerHTML = data;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                document.getElementById("content").innerText = "Failed to load data.";
+            });
+    </script>
+</body>
+</html>
