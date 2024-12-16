@@ -1,5 +1,5 @@
 const SPREADSHEET_ID = 'https://docs.google.com/spreadsheets/d/1u0gyl_DIz9ygj6wgyBE609QHNQwFIh7pu4WK81s1pKc/edit?usp=sharing'; // ใส่ ID ของ Google Sheets
-const SHEET_NAME = 'order'; // ชื่อชีทใน Google Sheets
+const SHEET_NAME = 'Order'; // ชื่อชีทใน Google Sheets
 
 // ฟังก์ชัน Web App ที่แสดง HTML หน้าเว็บ
 function doGet() {
